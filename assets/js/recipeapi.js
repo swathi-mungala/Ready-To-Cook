@@ -71,11 +71,63 @@ function displayRecipe(recipeData) {
 
 getRecipes();
 
+//array for home page cards
+let homeRecipes = [
+  {
+    "title": "Chicken dishes",
+    "Picture": "./assets/images/grilledChicken.png",
+    "description": "a quick mid week meal or the star of the show for a Sunday Roast - get inspired by chicken.",
+    "api": "apiQuery"
+  },
+  {
+    "title": "Pancakes",
+    "Picture": "./assets/images/pancakes.png",
+    "description": "Get set for Shrove Tuesday on 13 Feb",
+    "api": "apiQuery"
+  },
+  {
+    "title": "Chinese food",
+    "Picture": "./assets/images/chineseFood.png",
+    "description": "Get creative with Chinese flavours",
+    "api": "apiQuery"
+  },
+  { 
+    "title": "Pasta Dishes",
+    "Picture": "./assets/images/pastaSalad.png",
+    "description": "Too busy to spend long cooking? It will be ready in no time with our pasta dishes.",
+    "api": "apiQuery"
+  },
+  {
+    "title": "Eggs Eggs Eggs",
+    "Picture": "./assets/images/souffle.png",
+    "description": "Get more creative than scrambled with our excellent egg ideas",
+    "api": "apiQuery"
+  },
+  {
+    "title": "Sunday Roast",
+    "Picture": "./assets/images/sundayRoast.png",
+    "description": "What better reason to get everyone together than for a mouth watering Sunday Roast",
+    "api": "apiQuery"
+  },
+  {
+    "title": "Soups",
+    "Picture": "./assets/images/soups.png",
+    "description": "Hearty and warming winter soup ideas",
+    "api": "apiQuery"
+  }
+    ]
+
+
+
+
+
 //create cards for homepage -------------------------------------------------
 
+var cardCol;
+
 for (var i=1;i<=4;i++) {
-  var cardCol = $('<div class="col-sm-12 col-md-6 col-lg-3 pb-2"></div>');
-  var myPanel = $('<div class="card" style="width: 18rem;" id="'+i+'Panel"><img src="..." class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">Card title</h5><p class="card-text">"Some quick example text to build on the card title and make up the bulk of the cards content."</p><a href="#" class="btn btn-secondary">Go to Recipe</a></div></div>');
+  cardCol = $('<div class="col-sm-12 col-md-6 col-lg-3 pb-2"></div>');
+  var myPanel = $('<div class="card" style="width: 18rem;" id="'+i+'Panel"><img src='+homeRecipes[i].Picture+' class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">'+homeRecipes[i].title+'</h5><p class="card-text">'+ homeRecipes[i].description +'</p><a href="#" class="btn btn-secondary">Go to Recipe</a></div></div>');
   myPanel.appendTo(cardCol);
   cardCol.appendTo('#recipeCards');
 }
@@ -86,7 +138,7 @@ for (var i=1;i<=4;i++) {
 //create cards on search click --------------------------------------------
 var createCards = function (){
 for (var i=1;i<=4;i++) {
-    var cardCol = $('<div class="col-sm-3 col-md-3 pb-2"></div>');
+    cardCol = $('<div class="col-sm-3 col-md-3 pb-2"></div>');
     var myPanel = $('<div class="card" style="width: 18rem;" id="'+i+'Panel"><img src="..." class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">Card title</h5><p class="card-text">"Some quick example text to build on the card title and make up the bulk of the cards content."</p><a href="#" class="btn btn-secondary">Go to Recipe</a></div></div>');
     myPanel.appendTo(cardCol);
     cardCol.appendTo('#recipeCards');
@@ -95,6 +147,7 @@ for (var i=1;i<=4;i++) {
 
 
 $('#btnGen').click(function(){
+  $("#recipeCards").empty();
 createCards($('#numPanels').val());
 return false;
 });
