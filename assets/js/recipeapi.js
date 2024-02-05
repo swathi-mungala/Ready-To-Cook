@@ -6,12 +6,13 @@ var apiQueryCalories = ""; // calories=
 var apiMealType = ""; // mealType=
 var apiAppId = "3bf68971";
 var apiAppKey = "0368b81109c39e303c8795c2f41416da";
+var recipesArray = [];
 
 // build and query the recipes API
 function getRecipes() {
   // get search text from screen field
-  // apiQueryText = document.getElementById("search-text");
-  
+  apiQueryText = document.getElementById("search-text").value;
+
   // get dietary needs from screen field
   // apiQueryDietaryNeeds = document.getElementById("dietary-needs");
   
@@ -39,18 +40,15 @@ function getRecipes() {
     // + "&mealType="+ apiMealType
 
 
-  console.log(queryAPI);
-
   // query the API
-  fetch(queryAPI)
+  return fetch(queryAPI)
     .then(function (response) {
       // if response code not 200 (OK) output error to log
       if (response.status != 200) {
         console.error(response.status + " returned from call to " + queryAPI);
       }
       return response.json();
-    })
-    .then(displayRecipe);
+    });
 }
 
 // display Recipes
@@ -68,8 +66,6 @@ function displayRecipe(recipeData) {
     console.log(recipeDetails.label);
   }
 }
-
-getRecipes();
 
 //array for home page cards
 let homeRecipes = [
@@ -136,18 +132,48 @@ for (var i=1;i<=4;i++) {
 
 
 //create cards on search click --------------------------------------------
-var createCards = function (){
-for (var i=1;i<=4;i++) {
+function createCards() {
+  for (let i = 0; i < recipesArray.length; i++) {
+    const recipe = recipesArray[i].recipe;
+    console.log(recipe);
+
+    // get ingredients as ul
+    var ingCount = recipe.ingredientLines.length;
+    var ingList = "";
+    if ( ingCount> 4) {
+      ingList = "Ingredients (4 of "+ingCount+")";
+    } else {
+      ingList = "Ingredients ("+ingCount+")";
+    }
+    
+    for (let j = 0; j < ingCount; j++) {
+      if (j > 3){break;      }
+      const ingredients = recipe.ingredientLines[j];
+      ingList += '<ul>'+ ingredients +'</ul>';
+    }
+
     cardCol = $('<div class="col-sm-3 col-md-3 pb-2"></div>');
-    var myPanel = $('<div class="card" style="width: 18rem;" id="'+i+'Panel"><img src="..." class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">Card title</h5><p class="card-text">"Some quick example text to build on the card title and make up the bulk of the cards content."</p><a href="#" class="btn btn-secondary">Go to Recipe</a></div></div>');
+    var myPanel = $(
+      '<div class="card" style="width: 18rem;" id="' +
+        i +
+        'Panel"><img src="' +
+        recipe.image +
+        '" class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">' +
+        recipe.label +
+        '</h5><p class="card-text">'+ingList+'</p><a target=_blank href="' +
+        recipe.url +
+        '" class="btn btn-secondary">Go to Recipe</a></div></div>'
+    );
     myPanel.appendTo(cardCol);
-    cardCol.appendTo('#recipeCards');
+    cardCol.appendTo("#recipeCards");
+  }
 }
-};
 
-
-$('#btnGen').click(function(){
+$('#btnGen').click(function(event){
+  event.preventDefault();
   $("#recipeCards").empty();
-createCards($('#numPanels').val());
-return false;
+  getRecipes().then((data) => {
+    recipesArray = data.hits;
+    createCards();
+  });
 });
