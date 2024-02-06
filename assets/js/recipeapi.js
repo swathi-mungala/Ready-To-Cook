@@ -71,6 +71,7 @@ let homeRecipes = [
 ];
 
 //create cards for homepage -------------------------------------------------
+homeRecipes.sort( () => Math.random() - 0.5); //make the recipes appear in a different order each time
 var cardCol;
 
 for (var i = 1; i <= 4; i++) {
@@ -86,7 +87,7 @@ for (var i = 1; i <= 4; i++) {
       homeRecipes[i].description +
       '</p><a href="#" class="btn btn-secondary homeBtn" name="' +
       homeRecipes[i].title +
-      '">Go to Recipe</a></div></div>'
+      '">Go to Recipes</a></div></div>'
   );
   myPanel.appendTo(cardCol);
   cardCol.appendTo("#recipeCards");
