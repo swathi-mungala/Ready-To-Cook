@@ -7,6 +7,7 @@ var apiMealType = ""; // mealType=
 const apiAppId = "3bf68971";
 const apiAppKey = "0368b81109c39e303c8795c2f41416da";
 var recipesArray = [];
+var storeIngredient = [];
 
 // build and query the recipes API
 function getRecipes(fndArr) {
@@ -97,7 +98,7 @@ for (var i = 1; i <= 4; i++) {
 function createCards() {
   for (let i = 0; i < recipesArray.length; i++) {
     const recipe = recipesArray[i].recipe;
-    console.log(recipe);
+    // console.log(recipe);
 
     // get ingredients as ul
     var ingCount = recipe.ingredientLines.length;
@@ -150,7 +151,26 @@ $("#btnGen").click(function (event) {
     recipesArray = data.hits;
     createCards();
   });
+  var searchKeyword = document.getElementById("search-text").value;
+  // console.log("searchKeyword is - " + searchKeyword);
+
+  var existingSearches = JSON.parse(localStorage.getItem("RecentSearches")) || [];
+  existingSearches.push(searchKeyword);
+
+  localStorage.setItem("RecentSearches", JSON.stringify(existingSearches));
+
+  displayRecentSearches();
 });
+
+function displayRecentSearches() {
+  var recentSearchesContainer = document.getElementById('recent-searches');
+  var recentSearches = JSON.parse(localStorage.getItem("RecentSearches"));
+  if (recentSearches && recentSearches.length > 0) {
+    recentSearchesContainer.innerHTML = "<strong>Recent Searches:</strong><br>" + recentSearches.join(", ");
+} else {
+    recentSearchesContainer.textContent = "No recent searches.";
+}
+}
 
 $(document).on("click", ".homeBtn", function (event) {
   event.preventDefault();
