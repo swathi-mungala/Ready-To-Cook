@@ -7,7 +7,7 @@ nav p {
 }
 
 body {
-  padding-top: 70px;
+  padding-top: 20px;
 }
 .navbar.navbar-inverse {
   border: none;
@@ -17,4 +17,12 @@ body {
 }
 .navbar .navbar-brand img {
   height: 50px;
+}
+
+.navbar-nav {
+  width: max-content;
+}
+
+a.navbar-brand {
+  padding-bottom: 0px;
 }
