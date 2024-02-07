@@ -1,0 +1,22 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+#viewDiv {
+  flex: 1;
+}
+
+#categorySelect {
+  margin: 5px;
+}
+
+#contents {
+  --calcite-shell-panel-min-width: 340px;
+}
+
+calcite-shell{
+  position: unset;
+}

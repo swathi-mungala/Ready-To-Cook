@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Store Locator</title>
+    <link rel="stylesheet" href="./assets/css/storefinder.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.28/"></script>
+    <script type="module" src="https://js.arcgis.com/calcite-components/1.9.2/calcite.esm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.9.2/calcite.css" />
+
+</head>
+
+<body>
+    <calcite-shell>
+        <calcite-shell-panel slot="panel-start" position="start" id="contents">
+            <calcite-panel class="contents">
+                <calcite-flow id="flow">
+                    <calcite-flow-item>
+                        <calcite-list id="results">
+                            <calcite-notice open>
+                                <div slot="message">
+                                    Click on the map to search for shops nearby
+                                </div>
+                            </calcite-notice>
+                        </calcite-list>
+                    </calcite-flow-item>
+                </calcite-flow>
+            </calcite-panel>
+        </calcite-shell-panel>
+        <div id="viewDiv"></div>
+    </calcite-shell>
+    <script src="./assets/js/storefinder.js"></script>
+
+</body>
+
+</html>
