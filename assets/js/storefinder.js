@@ -166,12 +166,12 @@ require([
     // If a place in the info panel is clicked
     // then open the feature's popup
     infoDiv.addEventListener("click", async () => {
-      view.openPopup({
+      viewObj.openPopup({
         location: place.location,
         title: place.name,
       });
       // Move the view to center on the selected place feature
-      view.goTo(placeGraphic);
+      viewObj.goTo(placeGraphic);
       // Fetch more details about each place based
       // on the place ID with all possible fields
       const fetchPlaceParameters = new FetchPlaceParameters({
@@ -200,7 +200,7 @@ require([
     setAttribute("Phone", "mobile", placeDetails.contactInfo.telephone);
     setAttribute("Hours", "clock", placeDetails.hours.openingText);
     infoPanel.addEventListener("calciteFlowItemBack", async () => {
-      view.closePopup();
+      viewObj.closePopup();
     });
   }
 
