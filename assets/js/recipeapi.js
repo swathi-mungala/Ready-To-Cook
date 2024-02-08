@@ -7,7 +7,6 @@ var apiMealType = ""; // mealType=
 const apiAppId = "3bf68971";
 const apiAppKey = "0368b81109c39e303c8795c2f41416da";
 var recipesArray = [];
-var storeIngredient = [];
 
 // build and query the recipes API
 function getRecipes(fndArr) {
@@ -50,7 +49,7 @@ let homeRecipes = [
     api: "https://api.edamam.com/api/recipes/v2?type=public&app_id=3bf68971&app_key=0368b81109c39e303c8795c2f41416da&dishType=Pasta",
   },
   {
-    title: "Eggs Eggs Eggs",
+    title: "Egg Dishes",
     Picture: "./assets/images/souffle.png",
     description:
       "Get more creative than scrambled with our excellent egg ideas",
@@ -151,17 +150,34 @@ $("#btnGen").click(function (event) {
     recipesArray = data.hits;
     createCards();
   });
+
   var searchKeyword = document.getElementById("search-text").value;
   // console.log("searchKeyword is - " + searchKeyword);
-
-  var existingSearches = JSON.parse(localStorage.getItem("RecentSearches")) || [];
+  var existingSearches = []
+  // To retrieve existing recent searches from local storage
+  existingSearches = JSON.parse(localStorage.getItem("RecentSearches")) || [];
+  // To add the new search keyword to the array
   existingSearches.push(searchKeyword);
+
+  // To Limit the number of searches to 5
+  if (existingSearches.length > 5) {
+    existingSearches = existingSearches.slice(-5);
+  }
 
   localStorage.setItem("RecentSearches", JSON.stringify(existingSearches));
 
   displayRecentSearches();
 });
 
+// Function to clear local storage
+function clearLocalStorage() {
+  localStorage.clear();
+}
+
+// Call the function to clear local storage when the page loads
+window.onload = clearLocalStorage;
+
+// Function to show recent searches
 function displayRecentSearches() {
   var recentSearchesContainer = document.getElementById('recent-searches');
   var recentSearches = JSON.parse(localStorage.getItem("RecentSearches"));
