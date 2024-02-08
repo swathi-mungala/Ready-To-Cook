@@ -47,7 +47,7 @@ let homeRecipes = [
     Picture: "./assets/images/pastaSalad.png",
     description:
       "Too busy to spend long cooking? It will be ready in no time with our pasta dishes.",
-    api: "https://api.edamam.com/api/recipes/v2?type=public&app_id=3bf68971&app_key=0368b81109c39e303c8795c2f41416da&dishType=Pasta",
+    api: "https://api.edamam.com/api/recipes/v2?type=public&app_id=3bf68971&app_key=0368b81109c39e303c8795c2f41416da&q=Pasta",
   },
   {
     title: "Eggs Eggs Eggs",
