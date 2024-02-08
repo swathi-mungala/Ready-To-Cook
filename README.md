@@ -1,7 +1,7 @@
-# Ready-To-Cook
+# Ready To Cook
 
 ## Description
-"Ready to cook" is all about cooking your own food by searching for recipes with the ingredients you have to hand.
+"Ready To Cook" is all about cooking your own food by searching for recipes with the ingredients you have to hand.
 
 ## Table of Contents
 * [Links](#links)
@@ -17,7 +17,7 @@
 * [Live](https://swathi-mungala.github.io/Ready-To-Cook/)
 
 ## Installation
-aaaa
+
 
 ## Usage
 ### Recipe Search Screen
@@ -40,7 +40,7 @@ In this box you may enter your ingredients that you have. Clicking the search bu
 
 When the search is performed, the quick find buttons will be replaced and cards of recipes will be displayed. The information initially provided is an image of the recipe, it's title and a list of the ingredients (up to 4). A button is also provided which, when clicked, will open a new browser tab with the complete recipe.
 #### Example recipe card:
-<img alt="example recipe card" src="assets/images/exampleRecipe.png" width=25%></img>
+<img alt="example recipe card" src="assets/images/exampleRecipe.png"></img>
 
 ### Store Finder
 The store finder will initially open with the mapped zoomed in to Windsor.
@@ -55,31 +55,36 @@ Clicking on an item in the results pane will display further information about t
 
 ## Screenshots
 ### Initial Home screen
-<img src="./assets/images/screenshot-homescreen.png" width=75% alt="initial home screen image"></img>
+<img src="./assets/images/screenshot-homescreen.png" alt="initial home screen image" width=50%></img>
 ### Screenshot 2 - Recipe Search
-<img alt="recipe search performed image" src="./assets/images/screenshot-search.png" width=75%></img>
+<img alt="recipe search performed image" src="./assets/images/screenshot-search.png" width=50%></img>
 ### Initial Store Finder
-<img alt="initial store finder image" src="./assets/images/screenshot-storeFinder1.png" width=75%></img>
+<img alt="initial store finder image" src="./assets/images/screenshot-storeFinder1.png" width=50%></img>
 ### Store Finder with Results
-<img alt="store finder results" src="./assets/images/screenshot-storeFinder2.png" width=75%></img>
+<img alt="store finder results" src="./assets/images/screenshot-storeFinder2.png" width=50%></img>
 
 ## Project Items
 ### Screen Designs
 
 ### Kanban Board
-(https://github.com/users/TraceyPen/projects/2)
+https://github.com/users/TraceyPen/projects/2
+
+### Issues
+https://github.com/swathi-mungala/Ready-To-Cook/issues
 
 ## License
 MIT License as per repository.
 
 ## Features
 JavaScript, notably:
-- APIs (firstapi.com & thisotherapi.org)
+- APIs (Edamam.com & arcGIS.com)
 - Bootstrap
 
 ## Acknowledgements
 Thanks to:
 * Bootcamp Lessons
-* Tracey, Swathi, Duncan
+* Sara Benchinoun
+* Swathi, Tracey, Duncan
+* Edamam & ArcGIS ("open" APIs and documentation)
 
 © 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
